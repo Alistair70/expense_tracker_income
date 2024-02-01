@@ -3,10 +3,11 @@ document.getElementById("dashButton").addEventListener("click", function() {
 });
 document.getElementById("logout").addEventListener("click", function() {
     cookie_name = "expense_tracker_cookie_container"
-    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    window.location.href = 'https://expense-tracker-aytr.onrender.com';
+    const now = new Date();
+    const expirationTime = new Date(now.getTime() - 15 * 60 * 1000);
+    document.cookie = `${cookie_name}=; domain=.expense-tracker-demo.site; expires=${expirationTime.toUTCString()}; path=/`;
+    window.location.href = 'https://landing.expense-tracker-demo.site/';
 });
-
 encoded_id = getEncodedID_or_Landing();
 
 // Request the income types from the Python backend to populate the dropdown menu
