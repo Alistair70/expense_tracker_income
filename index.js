@@ -117,12 +117,13 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function()
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
 function saveIncomeToDatabase(incomeType, amount, date) {    
+    console.log('trying to add')
     fetch('https://expense-tracker-aytr.onrender.com/add_income', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ incomeType: incomeType, amount: amount, date: date, encoded_id:encoded_id})
+        body: JSON.stringify({ incomeType:incomeType, amount:amount, date:date, encoded_id:encoded_id})
     })
     .then(response => response.json())
     .then(data => {
