@@ -125,6 +125,9 @@ function saveIncomeToDatabase(incomeType, amount, date) {
         body: JSON.stringify({ incomeType: incomeType, amount: amount, date: date, encoded_id:encoded_id})
     })
     .then(response => response.json())
+    .then(data => {
+        console.log(data.message)
+    });
 }
 
 //////////DISPLAY ADD INCOME FROM WHEN BUTTON IS CLICKED
