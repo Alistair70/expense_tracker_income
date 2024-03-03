@@ -98,7 +98,8 @@ document.getElementById("addIncomeBtn").addEventListener("click", function() {
 
 // When "Confirm Income" button is clicked the inputted values are validated  
 // and if valid values are sent to be inserted into the respective database. 
-document.getElementById("confirmIncomeBtn").addEventListener("click", function() {
+document.getElementById("confirmIncomeBtn").addEventListener("click", function(event) {
+    event.preventDefault();
     var selectedIncomeTypeInput = incomeTypeDropdown.value;
     var amountInput = document.getElementById("amount").value;
     var dateInput = document.getElementById("userDate").value;
