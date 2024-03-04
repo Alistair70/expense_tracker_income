@@ -111,7 +111,7 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function(e
     else
     {
         saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput, enc);
-                
+               
     }   
 });
 
@@ -128,7 +128,8 @@ function saveIncomeToDatabase(incomeType, amount, date, enc) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message)
+        if(data.message === 'success')
+            location.reload();
     });
 }
 
