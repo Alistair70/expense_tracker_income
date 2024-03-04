@@ -110,8 +110,7 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function(e
     }
     else
     {
-        saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput, enc);
-               
+        saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput, enc);               
     }   
 });
 
@@ -156,7 +155,6 @@ document.getElementById("confirmNewIncomeType").addEventListener("click", functi
     else
     {
         saveIncomeTypeToDatabase(newIncomeType);
-        location.reload();
     }   
 });
 
@@ -174,7 +172,7 @@ function saveIncomeTypeToDatabase(newIncomeType) {
     .then(data => {
         if(data.message === 'exists')
             document.getElementById("message").innerHTML = "Income Type Already Exists";
-        else
+        if(data.message === 'success')
             location.reload();
     });
 }
