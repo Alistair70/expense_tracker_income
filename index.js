@@ -111,7 +111,7 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function(e
     else
     {
         saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput, enc);
-        location.reload();        
+                
     }   
 });
 
