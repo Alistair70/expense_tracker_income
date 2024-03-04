@@ -103,28 +103,28 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function(e
     var selectedIncomeTypeInput = incomeTypeDropdown.value;
     var amountInput = document.getElementById("amount").value;
     var dateInput = document.getElementById("userDate").value;
-    
+    enc = encoded_id;
     if(selectedIncomeTypeInput == "" || amountInput == "" || dateInput == "" || parseFloat(amountInput).toFixed(2) < 0)
     {
         document.getElementById("error").innerHTML = "Enter Missing/Valid Values";
     }
     else
     {
-        saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput);
+        saveIncomeToDatabase(selectedIncomeTypeInput, amountInput, dateInput, enc);
         location.reload();        
     }   
 });
 
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
-function saveIncomeToDatabase(incomeType, amount, date) {    
+function saveIncomeToDatabase(incomeType, amount, date, enc) {    
     console.log('trying to add')
     fetch('https://expense-tracker-aytr.onrender.com/add_income', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ incomeType:incomeType, amount:amount, date:date, encoded_id:encoded_id})
+        body: JSON.stringify({ incomeType:incomeType, amount:amount, date:date, encoded_id:enc})
     })
     .then(response => response.json())
     .then(data => {
