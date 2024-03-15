@@ -210,6 +210,7 @@ function getIncomeEntries() {
             row.innerHTML = `
             <td>${data.entries[x]['income_type']}</td>
             <td>${data.entries[x]['amount']}</td>
+            <td>${data.entries[x]['date']}</td>
             <td><button class="delete-btn" onclick="deleteEntry(${data.entries[x]['income_id']})">Delete</button></td>
             `;
             tbody.appendChild(row);            
