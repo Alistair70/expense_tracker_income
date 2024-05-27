@@ -12,7 +12,7 @@ encoded_id = getEncodedID_or_Landing();
 
 // Request the income types from the Python backend to populate the dropdown menu
 var incomeTypeDropdown = document.getElementById("incomeType");
-fetch('https://expense-tracker-aytr.onrender.com/get_income_types', {
+fetch('https://main-py-server.onrender.com/get_income_types', {
     method: 'POST',
     headers: {
        'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // a button to delete it if the user requests to do so.
 function getIncomeTypes() {
     const incomeTypesList = document.getElementById('incomeTypesList');
-    fetch('https://expense-tracker-aytr.onrender.com/get_income_types', {
+    fetch('https://main-py-server.onrender.com/get_income_types', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ function getIncomeTypes() {
 
 //Function that takes an INCOME TYPE and sends a request to delete it from the database
 function remove_income_type(incomeType) {
-    fetch('https://expense-tracker-aytr.onrender.com/remove_income_type', {
+    fetch('https://main-py-server.onrender.com/remove_income_type', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ document.getElementById("confirmIncomeBtn").addEventListener("click", function(e
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
 function saveIncomeToDatabase(incomeType, amount, date, enc) { 
-    fetch('https://expense-tracker-aytr.onrender.com/add_income', {
+    fetch('https://main-py-server.onrender.com/add_income', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -160,7 +160,7 @@ document.getElementById("confirmNewIncomeType").addEventListener("click", functi
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
 function saveIncomeTypeToDatabase(newIncomeType) {    
-    fetch('https://expense-tracker-aytr.onrender.com/add_income_type', {
+    fetch('https://main-py-server.onrender.com/add_income_type', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ document.getElementById("editIncome").addEventListener("click", function() {
 // as well as button to delete it if the user reques to do so.
 function getIncomeEntries() {
     const dataGrid = document.getElementById('dataGrid');
-    fetch('https://expense-tracker-aytr.onrender.com/get_recent_income', {
+    fetch('https://main-py-server.onrender.com/get_recent_income', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -220,7 +220,7 @@ function getIncomeEntries() {
 
 //Function that takes the ID of a singular income entry and sends a request to delete it from the database
 function deleteEntry(id) {
-    fetch('https://expense-tracker-aytr.onrender.com/delete_income_entry', {        
+    fetch('https://main-py-server.onrender.com/delete_income_entry', {        
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -259,5 +259,5 @@ function getEncodedID_or_Landing() {
             return value;
         }
     }
-    window.location.href = 'https://expense-tracker-aytr.onrender.com';
+    window.location.href = 'https://landing.expense-tracker-demo.site/';
 }
