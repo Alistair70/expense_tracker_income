@@ -173,10 +173,14 @@ function saveIncomeTypeToDatabase(newIncomeType) {
     })
     .then(response => response.json())
     .then(data => {
+        const incomeTypesList = document.getElementById('incomeTypesList');
         if(data.message === 'exists')
             document.getElementById("message").innerHTML = "Income Type Already Exists";
         if(data.message === 'success')
-            location.reload();
+        {
+            incomeTypesList.innerHTML = '';
+            getIncomeTypes();
+        }
     });
 }
 
