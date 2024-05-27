@@ -80,7 +80,7 @@ function remove_income_type(incomeType) {
     })
     .then(response => response.json())    
     .then(data => {
-        if(data.message === 'success')
+        if(data.status === 'success')
             getIncomeTypes();
     });
 }
