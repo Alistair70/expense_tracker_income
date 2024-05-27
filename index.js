@@ -80,8 +80,12 @@ function remove_income_type(incomeType) {
     })
     .then(response => response.json())    
     .then(data => {
+        const incomeTypesList = document.getElementById('incomeTypesList');
         if(data.status === 'success')
+        {
+            incomeTypesList.innerHTML = '';
             getIncomeTypes();
+        }
     });
 }
 
