@@ -62,7 +62,6 @@ function getIncomeTypes() {
             deleteButton.classList.add('btn_remove');
             deleteButton.addEventListener('click', function () {
                 remove_income_type(type);
-                location.reload();
             });
             li.appendChild(deleteButton);
             incomeTypesList.appendChild(li);
@@ -80,8 +79,9 @@ function remove_income_type(incomeType) {
         body: JSON.stringify({ incomeTypeTBR:incomeType , encoded_id:encoded_id }),
     })
     .then(response => response.json())    
-    .catch(error => {
-        console.error('Error:', error);
+    .then(data => {
+        if(data.message === 'success')
+            getIncomeTypes();
     });
 }
 
